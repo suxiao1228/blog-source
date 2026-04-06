@@ -1,0 +1,59 @@
+name: Build and Deploy Hexo
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: hexo-deploy
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build static site
+        run: |
+          npm run clean
+          npm run build
+
+      - name: Publish to bloglmage
+        env:
+          DEPLOY_TOKEN: ${{ secrets.DEPLOY_TOKEN }}
+        run: |
+          if [ -z "$DEPLOY_TOKEN" ]; then
+            echo "DEPLOY_TOKEN is missing. Add it in repo Settings -> Secrets and variables -> Actions."
+            exit 1
+          fi
+
+          git clone --depth 1 "https://x-access-token:${DEPLOY_TOKEN}@github.com/suxiao1228/bloglmage.git" deploy-repo
+          rsync -av --delete --exclude ".git" public/ deploy-repo/
+
+          cd deploy-repo
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to deploy."
+            exit 0
+          fi
+
+          git commit -m "Deploy from blog-source: ${GITHUB_SHA}"
+          git push origin main
