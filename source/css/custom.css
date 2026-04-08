@@ -1,0 +1,214 @@
+/* Custom Visual Refresh for Butterfly */
+:root {
+  --global-font-size: 15px;
+  --global-bg: #f4f9ff;
+  --font-color: #1f2a37;
+  --text-highlight-color: #0f172a;
+  --card-bg: rgba(255, 255, 255, 0.88);
+  --card-meta: #64748b;
+  --card-box-shadow: 0 16px 36px rgba(2, 6, 23, 0.08);
+  --card-hover-box-shadow: 0 22px 48px rgba(14, 116, 144, 0.16);
+  --sidebar-bg: rgba(255, 255, 255, 0.9);
+  --sidebar-menu-bg: rgba(255, 255, 255, 0.95);
+  --btn-bg: #0284c7;
+  --btn-hover-color: #0f766e;
+  --scrollbar-color: #0284c7;
+  --mark-bg: rgba(2, 6, 23, 0.28);
+}
+
+body {
+  font-family: "Avenir Next", "PingFang SC", "Microsoft YaHei", "Segoe UI", sans-serif;
+  background-image:
+    radial-gradient(circle at 6% 14%, rgba(14, 165, 233, 0.15), transparent 28%),
+    radial-gradient(circle at 94% 10%, rgba(20, 184, 166, 0.14), transparent 30%),
+    linear-gradient(180deg, #f7fbff 0%, #edf5fc 52%, #f8fcff 100%);
+}
+
+#page-header {
+  background-image:
+    linear-gradient(125deg, rgba(3, 105, 161, 0.76) 0%, rgba(15, 118, 110, 0.78) 100%),
+    radial-gradient(circle at 20% 20%, rgba(125, 211, 252, 0.28), transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(94, 234, 212, 0.22), transparent 34%);
+}
+
+#page-header.full_page {
+  height: 78vh;
+  min-height: 520px;
+  max-height: 860px;
+}
+
+#page-header #site-title {
+  font-size: clamp(2.3rem, 5.5vw, 4.1rem);
+  letter-spacing: 0.02em;
+  font-weight: 800;
+}
+
+#page-header #site-subtitle {
+  font-size: clamp(1rem, 2.1vw, 1.35rem);
+  opacity: 0.95;
+}
+
+#nav {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.24);
+  backdrop-filter: blur(10px);
+  background: rgba(3, 105, 161, 0.18);
+}
+
+#page-header.nav-fixed #nav,
+#page-header.not-top-img #nav {
+  background: rgba(255, 255, 255, 0.82);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+  backdrop-filter: blur(12px);
+}
+
+#page-header.nav-fixed #nav #blog-info,
+#page-header.nav-fixed #nav a,
+#page-header.nav-fixed #nav span.site-page,
+#page-header.not-top-img #nav #blog-info,
+#page-header.not-top-img #nav a,
+#page-header.not-top-img #nav span.site-page {
+  color: #0f172a;
+}
+
+.layout {
+  max-width: 1280px;
+  padding: 46px 18px 60px;
+}
+
+.layout > div:first-child:not(.nc),
+#recent-posts .recent-post-item,
+#aside-content .card-widget,
+.layout .pagination > *:not(.space) {
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 18px;
+}
+
+#recent-posts .recent-post-item {
+  margin-bottom: 24px;
+  min-height: 15.2em;
+  height: auto;
+  overflow: hidden;
+  transform: translateY(16px);
+  opacity: 0;
+  animation: card-enter .55s ease forwards;
+}
+
+#recent-posts .recent-post-item:nth-child(2) { animation-delay: .08s; }
+#recent-posts .recent-post-item:nth-child(3) { animation-delay: .16s; }
+#recent-posts .recent-post-item:nth-child(4) { animation-delay: .24s; }
+#recent-posts .recent-post-item:nth-child(5) { animation-delay: .32s; }
+#recent-posts .recent-post-item:nth-child(6) { animation-delay: .40s; }
+
+#recent-posts .recent-post-item > .recent-post-info {
+  padding: 30px 36px;
+}
+
+#recent-posts .recent-post-item > .recent-post-info > .article-title {
+  font-size: 1.7em;
+  font-weight: 700;
+}
+
+#recent-posts .recent-post-item > .recent-post-info > .content {
+  margin-top: 10px;
+  line-height: 1.85;
+  color: #475569;
+  -webkit-line-clamp: 3;
+}
+
+#aside-content .card-widget {
+  padding: 20px 22px;
+}
+
+#aside-content .card-info #card-info-btn {
+  border-radius: 10px;
+  background: linear-gradient(135deg, #0284c7 0%, #0f766e 100%);
+}
+
+#aside-content .card-info #card-info-btn:hover {
+  background: linear-gradient(135deg, #0369a1 0%, #0f766e 100%);
+}
+
+.avatar-img {
+  width: 116px;
+  height: 116px;
+  border-radius: 999px;
+  box-shadow: 0 8px 20px rgba(2, 132, 199, 0.22);
+}
+
+#footer {
+  background-image: linear-gradient(120deg, #0f172a 0%, #0f766e 100%);
+}
+
+#rightside > div > button,
+#rightside > div > a {
+  border-radius: 10px;
+  box-shadow: 0 10px 22px rgba(2, 132, 199, 0.24);
+}
+
+@keyframes card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+[data-theme='dark'] {
+  --global-bg: #0a1322;
+  --font-color: rgba(226, 232, 240, 0.9);
+  --text-highlight-color: rgba(248, 250, 252, 0.95);
+  --card-bg: rgba(15, 23, 42, 0.8);
+  --sidebar-bg: rgba(15, 23, 42, 0.84);
+  --sidebar-menu-bg: rgba(15, 23, 42, 0.92);
+  --card-box-shadow: 0 16px 38px rgba(2, 6, 23, 0.48);
+  --card-hover-box-shadow: 0 20px 44px rgba(6, 182, 212, 0.2);
+}
+
+[data-theme='dark'] body {
+  background-image:
+    radial-gradient(circle at 9% 10%, rgba(34, 211, 238, 0.16), transparent 30%),
+    radial-gradient(circle at 90% 14%, rgba(45, 212, 191, 0.12), transparent 28%),
+    linear-gradient(180deg, #0b1220 0%, #0d1627 52%, #0b1220 100%);
+}
+
+[data-theme='dark'] #page-header.nav-fixed #nav,
+[data-theme='dark'] #page-header.not-top-img #nav {
+  background: rgba(15, 23, 42, 0.84);
+}
+
+[data-theme='dark'] #page-header.nav-fixed #nav #blog-info,
+[data-theme='dark'] #page-header.nav-fixed #nav a,
+[data-theme='dark'] #page-header.nav-fixed #nav span.site-page,
+[data-theme='dark'] #page-header.not-top-img #nav #blog-info,
+[data-theme='dark'] #page-header.not-top-img #nav a,
+[data-theme='dark'] #page-header.not-top-img #nav span.site-page {
+  color: rgba(241, 245, 249, 0.94);
+}
+
+@media (max-width: 900px) {
+  .layout {
+    padding: 28px 10px 42px;
+  }
+
+  #recent-posts .recent-post-item {
+    min-height: auto;
+  }
+}
+
+@media (max-width: 768px) {
+  #page-header.full_page {
+    height: 68vh;
+    min-height: 420px;
+  }
+
+  #recent-posts .recent-post-item > .recent-post-info {
+    padding: 22px 18px 24px;
+  }
+
+  #recent-posts .recent-post-item > .recent-post-info > .article-title {
+    font-size: 1.38em;
+  }
+}
