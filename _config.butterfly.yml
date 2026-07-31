@@ -52,10 +52,10 @@ social:
 # Image Settings
 # --------------------------------------
 
-favicon: /img/favicon.png
+favicon: /img/avatar.jpg
 
 avatar:
-  img: /img/butterfly-icon.png
+  img: /img/avatar.jpg
   effect: false
 
 # Disable all banner images
@@ -280,7 +280,7 @@ aside:
     category: true
   card_author:
     enable: true
-    description:
+    description: Backend · Systems · Notes
     button:
       enable: true
       icon: fab fa-github
@@ -288,7 +288,7 @@ aside:
       link: https://github.com/suxiao1228
   card_announcement:
     enable: true
-    content: This is my Blog
+    content: Keep building. Keep writing.
   card_recent_post:
     enable: true
     # If set 0 will show all
