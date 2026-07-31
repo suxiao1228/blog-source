@@ -17,8 +17,10 @@ nav:
   fixed: true
 
 menu:
-  首页: / || fas fa-home
-  归档: /archives/ || fas fa-archive
+  Home: / || fas fa-home
+  About: /#about || fas fa-user
+  Blogs: /#content-inner || fas fa-book-open
+  Experience: /#experience || fas fa-briefcase
   GitHub: https://github.com/suxiao1228 || fab fa-github
   # List||fas fa-list:
   #   Music: /music/ || fas fa-music
