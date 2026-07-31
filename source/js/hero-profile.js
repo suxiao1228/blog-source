@@ -34,7 +34,7 @@
           </div>
           <div class="portfolio-about__content">
             <div class="portfolio-section-label">About Me</div>
-            <h2>代码之外，还有生活</h2>
+            <h2>一个正在进步的程序猿</h2>
             <p>
               我是西安邮电大学（XUPT）软件工程专业学生，拥有腾讯与美团两段实习经历。
               主要关注 Java 后端、分布式系统、缓存与数据库等方向，重视接口设计、系统稳定性、
@@ -91,4 +91,5 @@
     ? document.addEventListener('DOMContentLoaded', mountPortfolioHome)
     : mountPortfolioHome()
 })()
+
 
