@@ -21,7 +21,6 @@ menu:
   About: /#about || fas fa-user
   Blogs: /#content-inner || fas fa-book-open
   Experience: /#experience || fas fa-briefcase
-  GitHub: https://github.com/suxiao1228 || fab fa-github
   # List||fas fa-list:
   #   Music: /music/ || fas fa-music
   #   Movie: /movies/ || fas fa-video
@@ -286,10 +285,7 @@ aside:
     enable: true
     description: XUPT 软件工程 · 后端工程
     button:
-      enable: true
-      icon: fab fa-github
-      text: Follow Me
-      link: https://github.com/suxiao1228
+      enable: false
   card_announcement:
     enable: true
     content: Keep building. Keep writing.
